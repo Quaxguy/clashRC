@@ -81,4 +81,11 @@ class Submission(models.Model):
 #timer
 
 
+class Timer(models.Model):
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField(null=True, blank=True)
 
+    def elapsed_time(self):
+        if self.end_time is None:
+            return None
+        return self.end_time - self.start_time
